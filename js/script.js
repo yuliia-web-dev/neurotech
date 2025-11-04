@@ -98,52 +98,44 @@ document.addEventListener('DOMContentLoaded', () => {
 	});
 });
 
-const heroSwiper = new Swiper('.hero__swiper', {
-	loop: true, // Зациклення слайдів
-	autoplay: {
-		delay: 7000, // Час між слайдами
-	},
-	spaceBetween: 10,
-	slidesPerView: 1,
-	effect: 'fade', // Плавна зміна слайдів
-	fadeEffect: {
-		crossFade: true,
-	},
-	breakpoints: {
-		640: {
+window.addEventListener('load', () => {
+	setTimeout(() => {
+		// Ініціалізація слайдера
+		const heroSwiper = new Swiper('.hero__swiper', {
+			loop: true,
+			autoplay: { delay: 7000 },
 			slidesPerView: 1,
 			spaceBetween: 10,
-		},
-		1024: {
-			slidesPerView: 1,
-			spaceBetween: 10,
-		},
-	},
-	on: {
-		resize() {
-			this.update(); // Оновлення при зміні розміру екрана
-		}
-	}
+			effect: 'fade',
+			fadeEffect: { crossFade: true },
+			breakpoints: {
+				640: { slidesPerView: 1, spaceBetween: 10 },
+				1024: { slidesPerView: 1, spaceBetween: 10 },
+			},
+			on: {
+				resize() { this.update(); }
+			}
+		});
+
+		// Отримуємо всі фони слайдів
+		const heroBgs = document.querySelectorAll('.slide-hero__bg');
+
+		// Функція для оновлення активного фону
+		const updateActiveBg = () => {
+			heroBgs.forEach(bg => bg.classList.remove('active'));
+			const activeSlide = heroSwiper.slides[heroSwiper.activeIndex];
+			const activeBg = activeSlide.querySelector('.slide-hero__bg');
+			if (activeBg) activeBg.classList.add('active');
+		};
+
+		// Слухаємо зміну слайда
+		heroSwiper.on('slideChangeTransitionStart', updateActiveBg);
+
+		// Встановлюємо активний фон для першого слайда
+		updateActiveBg();
+	}, 150); // невелика затримка для розвантаження головного потоку
 });
 
-// Отримуємо всі фони слайдів один раз
-const heroBgs = document.querySelectorAll('.slide-hero__bg');
-
-// Функція для оновлення активного фону
-function updateActiveBg() {
-	heroBgs.forEach(bg => bg.classList.remove('active'));
-	const activeSlide = heroSwiper.slides[heroSwiper.activeIndex];
-	const activeBg = activeSlide.querySelector('.slide-hero__bg');
-	if (activeBg) activeBg.classList.add('active');
-}
-
-// Додаємо слухача на зміну слайда
-heroSwiper.on('slideChangeTransitionStart', updateActiveBg);
-
-// Активуємо перший фон при старті
-if (heroBgs[heroSwiper.activeIndex]) {
-	heroBgs[heroSwiper.activeIndex].classList.add('active');
-}
 
 
 
