@@ -1,0 +1,126 @@
+//===================HERO=====================================================================
+
+.hero {
+	position: relative;
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: start;
+	@media (max-width: toEm(767.98)) {
+		min-height: 60vh;
+	}
+	&__container {
+		width: 100%;
+		max-width: toRem(1170);
+		position: relative;
+		z-index: 2;
+	}
+	&__content {
+		padding-block-start: toRem(120);
+		padding-block-end: toRem(100);
+		display: flex;
+		align-items: center;
+		color: $whiteColor;
+		flex-wrap: wrap;
+		
+
+		@include adaptiveValue("gap", 200, 30, $widthTo: 900);
+	}
+	&__inner-wrap {
+		max-width: toRem(500);
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+	&__title {
+		font-size: toRem(58);
+		font-weight: 700;
+		line-height: 1.2;
+		margin-bottom: toRem(20);
+		text-transform: capitalize;
+		@media (max-width: toEm(767.98)) {
+			font-size: toRem(32);
+		}
+	}
+	&__text {
+		line-height: 1.2em;
+		font-weight: 300;
+		font-family: "Heebo";
+		color: $whiteColor;
+		margin-bottom: toRem(30);
+		@media (max-width: toEm(767.98)) {
+			font-size: toRem(16);
+		}
+	}
+	&__button {
+	}
+}
+
+
+.video-btn {
+	position: relative;
+	width: toRem(80);
+	height: toRem(80);
+	line-height: 45px;
+	background-color: #fff;
+	color: #fff;
+	font-size: toRem(18);
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	transition: all 0.4s ease;
+	overflow: visible;
+	@media (max-width: toEm(480)) {
+		width: toRem(60);
+		height: toRem(60);
+	}
+	svg {
+		width: toRem(40);
+		height: toRem(40);
+		transition: all 0.3s;
+	}
+	@media (any-hover: hover) {
+		&:hover {
+			background-color: #3b82f6;
+			svg {
+				fill: #fff;
+			}
+		}
+	}
+}
+
+.video-btn::after,
+.video-btn::before {
+	content: " ";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	box-shadow: 0 0 0 0 currentColor;
+	opacity: 0.6;
+	z-index: -1;
+	animation: button-ripple 3s infinite;
+}
+
+.video-btn::after {
+	animation-delay: 0.3s;
+}
+
+@keyframes button-ripple {
+	0% {
+		box-shadow: 0 0 0 0 currentColor;
+		opacity: 0.4;
+	}
+	70% {
+		box-shadow: 0 0 0 toRem(25) rgba(255, 255, 255, 0);
+		opacity: 0;
+	}
+	100% {
+		box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+		opacity: 0;
+	}
+}

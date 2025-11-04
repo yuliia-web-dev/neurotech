@@ -1,0 +1,133 @@
+.blog {
+	scroll-margin-top: toRem(50);
+	padding-block-start: toRem(50);
+	padding-block-end: toRem(80);
+	// .blog__container
+
+	&__container {
+	}
+
+	// .blog__label
+
+	&__label {
+		text-align: center;
+		&:not(:last-child) {
+			margin-bottom: toRem(10);
+		}
+	}
+
+	// .blog__title
+	&__title {
+		text-align: center;
+		&:not(:last-child) {
+			margin-bottom: toRem(30);
+		}
+	}
+
+	// .blog__text
+
+	&__text {
+		text-align: center;
+		max-width: toRem(600);
+		margin-inline: auto;
+		&:not(:last-child) {
+			margin-bottom: toRem(30);
+		}
+	}
+
+	// .blog__wrapper
+
+	&__wrapper {
+		display: flex;
+		flex-wrap: wrap;
+		gap: toRem(40);
+	}
+
+	// .blog__item
+
+	&__item {
+	}
+}
+
+.item-blog {
+	flex: 1 1 calc(33.333% - toRem(40));
+	display: flex;
+	flex-direction: column;
+	gap: toRem(20);
+		&:hover {
+			.item-blog__image {
+				transform: scale(1.1) rotate(3deg);
+			}
+		}
+	@media (max-width: toEm(830)) {
+		flex: 1 1 calc(50% - toRem(40));
+	}
+	@media (max-width: toEm(530)) {
+		flex: 1 1 100%;
+	}
+	&__img-link {
+		border-radius: toRem(5);
+		display: block;
+		aspect-ratio: 353 / 236;
+		overflow: hidden;
+	
+	}
+	// .item-blog__image
+
+	&__image {
+		width: 100%;
+		height: 100%;
+		display: block;
+		object-fit: cover;
+		will-change: transform;
+		transition: transform 0.3s ease-in-out;
+	}
+
+	// .item-blog__content
+
+	&__content {
+		display: flex;
+		flex-direction: column;
+		gap: toRem(15);
+		flex-grow: 1;
+	}
+
+	// .item-blog__date
+
+	&__date {
+		font-weight: 300;
+		font-family: "Heebo";
+		font-size: toRem(14);
+		color: $textColor;
+	}
+
+	// .item-blog__title
+
+	&__title {
+		a {
+			@include adaptiveValue("font-size", 20, 18);
+			font-weight: 600;
+			line-height: 1.2em;
+			text-decoration: none;
+			transition: color 0.3s ease;
+			cursor: pointer;
+
+			&:hover {
+				color: $accent-color;
+			}
+		}
+	}
+
+	// .item-blog__text
+
+	&__text {
+		flex-grow: 1;
+	}
+
+	// .item-blog__link
+
+	&__link {
+	}
+}
+.link {
+}

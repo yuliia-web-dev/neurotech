@@ -1,0 +1,133 @@
+.about {
+	scroll-margin-top: toRem(50);
+	@include adaptiveValue("padding-block", 100, 50);
+	// .about__container
+
+	&__container {
+		display: flex;
+		align-items: center;
+		@include adaptiveValue("gap", 50, 30);
+		@media (max-width: toEm(767.98)) {
+			flex-direction: column-reverse;
+		}
+	}
+
+	// .about__left-wrap
+
+	&__left-wrap {
+		position: relative;
+		flex: 1 1 auto;
+		max-width: toRem(545);
+		border-radius: toRem(5);
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		height: auto;
+		@media (max-width: toEm(767.98)) {
+			max-width: 100%;
+		}
+	}
+	&__image {
+		border-radius: toRem(5);
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+	// .about__right-wrap
+
+	&__right-wrap {
+		padding-block: toRem(30);
+		flex: 1 1 auto;
+		width: 100%;
+		height: auto;
+		display: flex;
+		flex-direction: column;
+		gap: toRem(30);
+	}
+
+	// .about__label
+
+	&__label {
+	}
+
+	// .about__title
+
+	&__title {
+	}
+
+	// .about__text
+
+	&__text {
+	}
+
+	// .about__block
+
+	&__block {
+		max-width: toRem(520);
+		border-left: toRem(4) solid $accent-color;
+		padding-left: toRem(30);
+		align-self: flex-end;
+		@media (max-width: toEm(767.98)) {
+			align-self: flex-start;
+			padding-left: toRem(15);
+		}
+	}
+
+	// .about__list
+
+	&__list {
+	}
+
+	// .about__list-item
+
+	&__list-item {
+		display: flex;
+		align-items: center;
+		gap: toRem(5);
+		&:not(:last-child) {
+			margin-bottom: toRem(10);
+		}
+		&::before {
+			content: "";
+			width: toRem(15);
+			height: toRem(15);
+			background: url("../img/checkmark.svg");
+			background-repeat: no-repeat;
+			background-size: contain;
+			flex-shrink: 0;
+		}
+	}
+}
+.custom-block {
+	// .custom-block__content
+
+	&__content {
+	}
+
+	// .custom-block__decor
+
+	&__decor {
+	}
+}
+
+.block {
+	display: grid;
+	gap: toRem(30);
+	// .block__text-bold
+
+	&__text-bold {
+		font-style: italic;
+		font-weight: 500;
+	}
+
+	// .block__text
+
+	&__text {
+	}
+
+	// .block__button
+
+	&__button {
+	}
+}

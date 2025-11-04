@@ -1,0 +1,47 @@
+.background {
+	padding-block-start: toRem(90);
+	padding-block-end: toRem(50);
+	position: relative;
+	background-image: url("../img/team-of-engineers-working.webp");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	min-height: toRem(440);
+	@media (min-width: toEm(1024)) {
+		background-attachment: fixed;
+	}
+	&::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background-color: #000;
+		opacity: 0.7;
+		z-index: 1;
+		pointer-events: none;
+	}
+
+	// .background__container
+
+	&__container {
+		text-align: center;
+		position: relative;
+		z-index: 5;
+	}
+
+	// .background__title
+
+	&__title {
+		max-width: toRem(890);
+		margin-inline: auto;
+		&:not(:last-child) {
+			margin-bottom: toRem(30);
+		}
+	}
+
+	// .background__text
+
+	&__text {
+		max-width: toRem(590);
+		margin-inline: auto;
+	}
+}

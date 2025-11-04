@@ -1,0 +1,224 @@
+// Мінімальна ширина сторінки
+$minWidth: 320;
+// Ширина полотна (макету)
+$maxWidth: 1920;
+// Ширина обмежуючого контейнера (0 = немає обмеження)
+$maxWidthContainer: 1270;
+// Загальний відступ у контейнера
+// (30 = по 15px ліворуч і праворуч, 0 = немає відступу)
+$containerPadding: 30;
+// Ширина спрацьовування першого брейкпоінту
+$containerWidth: $maxWidthContainer + $containerPadding;
+
+.header {
+	@include adaptiveValue("padding-top", 20, 8);
+	@include adaptiveValue("padding-bottom", 20, 8);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 1507;
+	transition: all 0.3s ease;
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(255, 255, 255, 0.1));
+
+	&::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		backdrop-filter: blur(6px);
+		-webkit-backdrop-filter: blur(6px);
+		z-index: -1;
+	}
+	&.scrolled {
+		padding-top: toRem(8);
+		padding-bottom: toRem(8);
+	}
+	// .header__container
+
+	&__container {
+		max-width: toRem(1170);
+		height: 100%;
+		font-size: toRem(16);
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		@include adaptiveValue("gap", 24, 15);
+	}
+
+	// .header__logo
+
+	&__logo {
+
+	}
+
+	// .header__button
+
+	&__button {
+	}
+}
+.logo{
+			display: flex;
+		align-items: center;
+		gap: toRem(10);
+		height: auto;
+		span {
+			@include adaptiveValue("font-size", 30, 25, $widthTo: 1000);
+
+			font-size: toRem(30);
+			font-weight: 700;
+			color: $whiteColor;
+		}
+		img {
+			width: toRem(40);
+			height: toRem(40);
+			object-fit: contain;
+		}
+}
+.menu {
+	@media (max-width: toEm(960)) {
+		flex: 1;
+	}
+	// .menu__body
+
+	&__body {
+		@media (max-width: toEm(960)) {
+			position: fixed;
+			background-color: rgb(119, 115, 115);
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			gap: toRem(50);
+			align-items: center;
+			inset: 0;
+			overflow-y: auto;
+			overflow-x: hidden;
+			transition: all 0.3s ease-in-out;
+			transform: scale(0) translate(100%, -100%);
+			transform-origin: top right;
+			opacity: 0;
+			visibility: hidden;
+			padding: toRem(15);
+			padding-top: toRem(90);
+			z-index: 56;
+			.menu-open & {
+				visibility: visible;
+				opacity: 1;
+				transform: scale(1) translate(0, 0);
+			}
+		}
+	}
+
+	// .menu__list
+
+	&__list {
+		display: flex;
+		flex-wrap: wrap;
+		@include adaptiveValue("column-gap", 40, 20, $widthTo: 1000);
+		row-gap: toRem(5);
+
+		@media (max-width: toEm(960)) {
+			flex-direction: column;
+			align-items: center;
+			text-align: right;
+			row-gap: toRem(28);
+		}
+	}
+
+	// .menu__item
+
+	&__item {
+		@media (any-hover: hover) {
+			&:hover {
+				.menu__link {
+					color: $accent-color;
+				}
+			}
+		}
+	}
+	// .menu__link
+
+	&__link {
+		font-weight: 500;
+		position: relative;
+		color: #fff;
+		font-size: toRem(18);
+		transition: color 0.3s;
+		&.active {
+			color: $accent-color;
+			font-weight: 500;
+
+		}
+		@media (max-width: toEm(960)) {
+			font-size: toRem(28);
+		}
+	}
+}
+
+.icon-menu {
+	flex-shrink: 0;
+	z-index: 57;
+	display: none;
+
+	@media (max-width: toEm(960)) {
+		position: relative;
+		width: toRem(30);
+		height: toRem(26);
+		background: none;
+		border: none;
+		appearance: none;
+		display: inline-block;
+		transition: all 0.4s;
+		box-sizing: border-box;
+
+		span {
+			position: absolute;
+			left: 0;
+			width: 100%;
+			height: toRem(3);
+			border-radius: toRem(5);
+			background-color: $accent-color;
+			display: inline-block;
+			transition: all 0.4s;
+			&:nth-of-type(1) {
+				top: 0;
+			}
+			&:nth-of-type(2) {
+				top: toRem(12);
+			}
+			&:nth-of-type(3) {
+				bottom: 0;
+			}
+		}
+	}
+}
+@media (max-width: toEm(960)) {
+	#menu02.active {
+		span:nth-of-type(1) {
+			transform: translateY(toRem(12)) rotate(-315deg);
+		}
+
+		span:nth-of-type(2) {
+			opacity: 0;
+		}
+
+		span:nth-of-type(3) {
+			transform: translateY(toRem(-11)) rotate(315deg);
+		}
+	}
+}
+.animation {
+	position: absolute;
+	bottom: 0;
+	height: toRem(5);
+	border-radius: toRem(5);
+	background: $accent-color;
+	transition: all 0.3s ease;
+	left: 0;
+	width: 0;
+	display: none;
+	@media (min-width: toEm(950)) {
+		&.show {
+			display: block;
+		}
+	}
+}

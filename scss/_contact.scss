@@ -1,0 +1,183 @@
+.contact {
+	scroll-margin-top: toRem(80);
+	position: relative;
+	transform: translateY(toRem(-100));
+	z-index: 3;
+	@media (max-width: toEm(600)) {
+		transform: translateY(toRem(-50));
+	}
+	// .contact__container
+
+	&__container {
+		display: flex;
+		@media (max-width: toEm(930)) {
+			flex-direction: column;
+		}
+	}
+
+	// .contact__left-wrap
+
+	&__left-wrap {
+		border-top-left-radius: toRem(5);
+		border-bottom-left-radius: toRem(5);
+		overflow: hidden;
+		box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.1);
+		flex: 1 1 50%;
+		color: $whiteColor;
+		background-color: $whiteColor;
+		background-image: url("../img/contact.jpg");
+		background-position: center center;
+		background-size: cover;
+		position: relative;
+		@media (max-width: toEm(930)) {
+			flex: 1 1 100%;
+			border-bottom-left-radius: toRem(0);
+			border-top-right-radius: toRem(5);
+		}
+		&::after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			background-color: $accent-color;
+			opacity: 0.9;
+			z-index: 1;
+			pointer-events: none;
+		}
+	}
+	&__info {
+		@include adaptiveValue("padding", 40, 10, $widthTo: 480);
+
+		position: relative;
+		z-index: 2;
+		@media (max-width: toEm(480)) {
+			padding: toRem(15);
+		}
+	}
+	// .contact__title
+
+	&__title {
+		&:not(:last-child) {
+			margin-bottom: toRem(30);
+		}
+	}
+
+	// .contact__text
+
+	&__text {
+		&:not(:last-child) {
+			margin-bottom: toRem(20);
+		}
+	}
+
+	// .contact__list
+
+	&__list {
+		&:not(:last-child) {
+			margin-bottom: toRem(30);
+		}
+	}
+
+	// .contact__item
+
+	&__item {
+		display: flex;
+		align-items: flex-start;
+		gap: toRem(10);
+		&:not(:last-child) {
+			margin-bottom: toRem(10);
+		}
+	}
+	&__buttons {
+		display: flex;
+		flex-wrap: wrap;
+		gap: toRem(20);
+	}
+	// .contact__button
+
+	&__button {
+	}
+
+	// .contact__link
+
+	&__link {
+	}
+
+	// .contact__right-wrap
+
+	&__right-wrap {
+		box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.1);
+		border-top-right-radius: toRem(5);
+		border-bottom-right-radius: toRem(5);
+		background-color: $whiteColor;
+		flex: 1 1 50%;
+		@include adaptiveValue("padding", 40, 10, $widthTo: 480);
+		@media (max-width: toEm(930)) {
+			flex: 1 1 100%;
+			border-top-right-radius: toRem(0);
+			border-bottom-right-radius: toRem(5);
+			border-bottom-left-radius: toRem(5);
+		}
+	}
+
+	// .contact__form
+
+	&__form {
+	}
+}
+
+.contact-form {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: toRem(40);
+	color: #111;
+
+	&__row {
+		display: flex;
+		gap: 1.5rem;
+
+		@media (max-width: toEm(600)) {
+			flex-direction: column;
+		}
+	}
+
+	&__group {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+
+		&--full {
+			width: 100%;
+		}
+	}
+
+	&__label {
+		font-weight: 600;
+		font-size: 0.95rem;
+	}
+
+	&__input,
+	&__select,
+	&__textarea {
+		width: 100%;
+		padding: 0.9rem 1rem;
+		border: 1px solid #ddd;
+		border-radius: toRem(4);
+		font-size: 1rem;
+		transition:
+			border-color 0.2s,
+			box-shadow 0.2s;
+
+		&:focus {
+			border-color: $accent-color;
+			box-shadow: 0 0 0 toRem(3) rgba(89, 22, 245, 0.1);
+			outline: none;
+		}
+	}
+
+	&__textarea {
+		min-height: toRem(130);
+		resize: vertical;
+	}
+}

@@ -1,0 +1,154 @@
+.projects {
+	padding: toRem(100) 0;
+	// .projects__container
+
+	&__container {
+	}
+
+	// .projects__label
+
+	&__label {
+		text-align: center;
+		&:not(:last-child) {
+			margin-bottom: toRem(15);
+		}
+	}
+
+	// .projects__title
+
+	&__title {
+		text-align: center;
+		&:not(:last-child) {
+			margin-bottom: toRem(40);
+		}
+	}
+
+	// .projects__wrapper
+
+	&__wrapper {
+		display: flex;
+		align-items: stretch;
+		flex-wrap: wrap;
+		gap: toRem(30);
+		&:not(:last-child) {
+			margin-bottom: toRem(60);
+		}
+	}
+
+	// .projects__item
+
+	&__item {
+	}
+}
+
+.item-project {
+	display: flex;
+	flex-direction: column;
+	flex: 1 1 calc(33.333% - toRem(30));
+	box-shadow: toRem(0) toRem(3) toRem(15) rgba(0, 0, 0, 0.1);
+	border-radius: toRem(5);
+
+	@media (max-width: toEm(860)) {
+		flex: 1 1 calc(50% - toRem(30));
+	}
+	@media (max-width: toEm(640)) {
+		flex: 1 1 100%;
+	}
+	// .item-project__image
+
+	&__image {
+		width: 100%;
+		height: auto;
+		aspect-ratio: 800/ 534;
+		display: block;
+		border-top-left-radius: toRem(5);
+		border-top-right-radius: toRem(5);
+	}
+
+	// .item-project__content
+
+	&__content {
+		padding: toRem(20) toRem(30);
+		background-color: $accent-color;
+		display: flex;
+		height: 100%;
+		gap: toRem(15);
+		color: $whiteColor;
+		flex-grow: 1;
+		svg {
+			flex-shrink: 0;
+			width: toRem(50);
+			height: toRem(50);
+			@media (max-width: toEm(640)) {
+				width: toRem(30);
+				height: toRem(30);
+			}
+		}
+	}
+	&__details {
+		padding: toRem(20) toRem(30);
+		display: flex;
+		flex-direction: column;
+		gap: toRem(20);
+		flex-grow: 1;
+	}
+	// .item-project__text
+
+	&__text {
+		flex-grow: 1;
+	}
+	&__title {
+		@include adaptiveValue("font-size", 20, 16);
+		font-weight: 600;
+		line-height: 1.2em;
+		flex-grow: 1;
+	}
+	span {
+		font-family: "Heebo", sans-serif;
+		font-weight: 300;
+	}
+	// .item-project__link
+
+	&__link {
+		color: $accent-color;
+		font-weight: 600;
+		text-transform: uppercase;
+		font-size: toRem(12);
+		transition: transform 0.3s;
+		display: flex;
+		align-items: center;
+		width: fit-content;
+		gap: toRem(5);
+		svg {
+			flex-shrink: 0;
+		}
+		&:hover {
+			transform: translateY(-5px);
+		}
+	}
+
+	// .item-project__info
+
+	&__info {
+		display: flex;
+		flex-direction: column;
+		gap: toRem(10);
+		flex-grow: 1;
+		span {
+			font-family: "Heebo", sans-serif;
+			font-weight: 300;
+		}
+	}
+}
+
+.cta {
+	text-align: center;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	gap: toRem(10);
+	&__link {
+		@extend .item-project__link;
+	}
+}
