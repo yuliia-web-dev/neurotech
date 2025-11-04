@@ -44,7 +44,7 @@
 		z-index: -1;
 		width: 100%;
 		height: 100%;
-		will-change: opacity;
+		will-change: transform, opacity;
 		&::after {
 			content: "";
 			position: absolute;
