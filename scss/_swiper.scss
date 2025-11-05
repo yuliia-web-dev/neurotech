@@ -74,6 +74,7 @@
 				transform 6s ease,
 				opacity 1.2s ease;
 			opacity: 0.95;
+			will-change: transform, opacity;
 		}
 	}
 
@@ -120,4 +121,6 @@
 
 .slide-hero:not(.swiper-slide-active) {
 	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
 }
