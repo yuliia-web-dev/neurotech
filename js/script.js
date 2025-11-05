@@ -229,38 +229,39 @@ document.addEventListener('DOMContentLoaded', () => {
 const titles = document.querySelectorAll('.item-navigation__title');
 
 function handleSpoiler() {
-	if (window.innerWidth <= 400) {
-		titles.forEach((title) => {
-			const list = title.nextElementSibling;
-			const arrow = title.querySelector('.nav-arrow');
+	const isMobile = window.innerWidth <= 400;
 
-			if (list) {
-				list.style.height = '0px';
-				list.style.overflow = 'hidden';
-				list.style.transition = 'height 0.3s ease-out';
+	titles.forEach((title) => {
+		const list = title.nextElementSibling;
+		const arrow = title.querySelector('.nav-arrow');
 
-				// Видаляємо старі обробники перед додаванням нових
-				title.removeEventListener('click', toggleSpoiler);
-				title.addEventListener('click', toggleSpoiler);
-			}
-		});
-	} else {
-		// Якщо ширина більше 600px, прибираємо inline-стилі та обробники подій
-		titles.forEach((title) => {
-			const list = title.nextElementSibling;
-			if (list) {
-				list.style.height = '';
-				list.style.overflow = '';
-				list.style.transition = '';
-				title.removeEventListener('click', toggleSpoiler);
-			}
-		});
-	}
+		if (!list) return;
+
+		// Видаляємо старі обробники перед додаванням нових, щоб не дублювати
+		title.removeEventListener('click', toggleSpoiler);
+
+		if (isMobile) {
+			list.style.height = '0px';
+			list.style.overflow = 'hidden';
+			list.style.transition = 'height 0.3s ease-out';
+
+			// Додаємо обробник тільки для мобільної версії
+			title.addEventListener('click', toggleSpoiler);
+		} else {
+			// Для десктопа прибираємо стилі
+			list.style.height = '';
+			list.style.overflow = '';
+			list.style.transition = '';
+			title.classList.remove('active');
+		}
+	});
 }
 
 function toggleSpoiler(event) {
 	const title = event.currentTarget;
 	const list = title.nextElementSibling;
+
+	if (!list) return;
 
 	if (list.style.height === '0px' || list.style.height === '') {
 		list.style.height = list.scrollHeight + 'px';
@@ -271,9 +272,14 @@ function toggleSpoiler(event) {
 	}
 }
 
-// Викликаємо функцію при завантаженні сторінки та при зміні розміру
+// Викликаємо функцію при завантаженні сторінки та при зміні розміру з debounce
+let resizeTimeout;
 window.addEventListener('load', handleSpoiler);
-window.addEventListener('resize', handleSpoiler);
+window.addEventListener('resize', () => {
+	clearTimeout(resizeTimeout);
+	resizeTimeout = setTimeout(handleSpoiler, 100);
+});
+
 
 //=========================animations on scroll=========================
 const observeElements = (selectors, options = { threshold: 0.3, unobserve: true }) => {
