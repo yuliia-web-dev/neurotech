@@ -2193,7 +2193,7 @@ textarea {
   font-weight: 300;
   font-family: "Heebo";
   font-size: 0.875rem;
-  color: #7a7a7a;
+  color: #5a5959;
 }
 .item-blog__title a {
   font-weight: 600;
@@ -2292,7 +2292,7 @@ textarea {
   -webkit-padding-after: 1.25rem;
           padding-block-end: 1.25rem;
   font-size: 0.875rem;
-  color: #7a7a7a;
+  color: #5a5959;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2910,7 +2910,7 @@ body.menu-open {
 }
 
 .text {
-  color: #7a7a7a;
+  color: #5a5959;
   font-family: "Heebo";
   font-weight: 300;
 }
