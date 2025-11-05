@@ -1,8 +1,6 @@
 "use strict"
 
 
-"use strict";
-
 document.addEventListener('DOMContentLoaded', () => {
 	const html = document.documentElement;
 	const body = document.body;
@@ -43,26 +41,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	//-------------------- Active link animation --------------------
 	function updateAnimationPosition() {
+		if (!animation) return;
+
 		const windowWidth = window.innerWidth;
 		const activeLink = document.querySelector('.menu__link.active');
 
-		if (!animation) return;
-
-		if (windowWidth >= 800 && activeLink) {
-			const headerRectLeft = document.querySelector('header').offsetLeft;
-			const rect = activeLink.getBoundingClientRect();
-
-			requestAnimationFrame(() => {
-				animation.style.left = `${rect.left - headerRectLeft - 5}px`;
-				animation.style.width = `${rect.width + 10}px`;
-				animation.classList.add('show');
-			});
-		} else {
+		if (windowWidth < 800 || !activeLink) {
 			animation.classList.remove('show');
+			return;
 		}
+
+		// Читаємо геометрію один раз
+		const rect = activeLink.getBoundingClientRect();
+		const headerRect = document.querySelector('header').getBoundingClientRect();
+		const translateX = rect.left - headerRect.left - 5;
+		const width = rect.width + 10;
+
+		// Встановлюємо через requestAnimationFrame
+		requestAnimationFrame(() => {
+			animation.style.transform = `translateX(${translateX}px)`;
+			animation.style.width = `${width}px`;
+			animation.classList.add('show');
+		});
 	}
 
-	// Debounce для resize
+	//-------------------- Resize debounce --------------------
 	let resizeTimeout;
 	window.addEventListener('resize', () => {
 		clearTimeout(resizeTimeout);
@@ -71,13 +74,16 @@ document.addEventListener('DOMContentLoaded', () => {
 		}, 150);
 	});
 
+	//-------------------- Click on menu links --------------------
 	menuLinks.forEach(link => {
 		link.addEventListener('click', () => {
 			menuLinks.forEach(l => l.classList.remove('active'));
 			link.classList.add('active');
-			setTimeout(updateAnimationPosition, 50);
+			// Використовуємо requestAnimationFrame для плавності
+			requestAnimationFrame(updateAnimationPosition);
 		});
 	});
+
 
 	//-------------------- Hero Swiper --------------------
 	window.addEventListener('load', () => {
