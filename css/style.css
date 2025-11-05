@@ -716,6 +716,10 @@ textarea {
   z-index: 1 !important;
 }
 
+.slide-hero:not(.swiper-slide-active) {
+  opacity: 0;
+}
+
 .hero {
   position: relative;
   min-height: 100vh;
