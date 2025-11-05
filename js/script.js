@@ -85,45 +85,50 @@ document.addEventListener('DOMContentLoaded', () => {
 	});
 
 
-	//-------------------- Hero Swiper --------------------
+	
+
+});
+
+ //-------------------- Hero Swiper --------------------
+
+document.addEventListener('DOMContentLoaded', () => {
+	let heroSwiper; // <-- оголошуємо тут
+	const heroBgs = document.querySelectorAll('.slide-hero__bg');
+
+	function updateActiveBg() {
+		if (!heroSwiper) return; // запобігаємо помилці
+		heroBgs.forEach(bg => bg.classList.remove('active'));
+		const activeSlide = heroSwiper.slides[heroSwiper.activeIndex];
+		const activeBg = activeSlide.querySelector('.slide-hero__bg');
+		if (activeBg) activeBg.classList.add('active');
+	}
+
 	window.addEventListener('load', () => {
-		setTimeout(() => {
-			const heroSwiper = new Swiper('.hero__swiper', {
-				loop: true,
-				autoplay: {
-					delay: 7000,
-					disableOnInteraction: false,
+		heroSwiper = new Swiper('.hero__swiper', {
+			loop: true,
+			autoplay: {
+				delay: 7000,
+				disableOnInteraction: false,
+			},
+			slidesPerView: 1,
+			spaceBetween: 10,
+			effect: 'fade',
+			fadeEffect: { crossFade: true },
+			preloadImages: false,
+			lazy: { loadPrevNext: true },
+			watchSlidesProgress: true,
+			breakpoints: {
+				640: { slidesPerView: 1, spaceBetween: 10 },
+				1024: { slidesPerView: 1, spaceBetween: 10 },
+			},
+			on: {
+				slideChangeTransitionStart() {
+					updateActiveBg();
 				},
-				slidesPerView: 1,
-				spaceBetween: 10,
-				effect: 'fade',
-				fadeEffect: { crossFade: true },
-				preloadImages: false,
-				lazy: { loadPrevNext: true },
-				watchSlidesProgress: true,
-				breakpoints: {
-					640: { slidesPerView: 1, spaceBetween: 10 },
-					1024: { slidesPerView: 1, spaceBetween: 10 },
-				},
-				on: {
-					slideChangeTransitionStart() {
-						updateActiveBg();
-					},
-				},
-			});
+			},
+		});
 
-			const heroBgs = document.querySelectorAll('.slide-hero__bg');
-
-			function updateActiveBg() {
-				heroBgs.forEach(bg => bg.classList.remove('active'));
-				const activeSlide = heroSwiper.slides[heroSwiper.activeIndex];
-				const activeBg = activeSlide.querySelector('.slide-hero__bg');
-				if (activeBg) activeBg.classList.add('active');
-			}
-
-			updateActiveBg();
-			setTimeout(updateAnimationPosition, 200);
-		}, 150);
+		updateActiveBg();
 	});
 });
 
@@ -233,25 +238,16 @@ function handleSpoiler() {
 
 	titles.forEach((title) => {
 		const list = title.nextElementSibling;
-		const arrow = title.querySelector('.nav-arrow');
-
 		if (!list) return;
 
-		// Видаляємо старі обробники перед додаванням нових, щоб не дублювати
+		// Знімаємо старі обробники
 		title.removeEventListener('click', toggleSpoiler);
 
 		if (isMobile) {
-			list.style.height = '0px';
-			list.style.overflow = 'hidden';
-			list.style.transition = 'height 0.3s ease-out';
-
-			// Додаємо обробник тільки для мобільної версії
+			// Додаємо обробник для мобільної версії
 			title.addEventListener('click', toggleSpoiler);
 		} else {
-			// Для десктопа прибираємо стилі
-			list.style.height = '';
-			list.style.overflow = '';
-			list.style.transition = '';
+			// Для десктопа прибираємо клас active
 			title.classList.remove('active');
 		}
 	});
@@ -263,22 +259,18 @@ function toggleSpoiler(event) {
 
 	if (!list) return;
 
-	if (list.style.height === '0px' || list.style.height === '') {
-		list.style.height = list.scrollHeight + 'px';
-		title.classList.add('active');
-	} else {
-		list.style.height = '0px';
-		title.classList.remove('active');
-	}
+	title.classList.toggle('active');
+	list.classList.toggle('active'); // додаємо/знімаємо клас для списку
 }
 
-// Викликаємо функцію при завантаженні сторінки та при зміні розміру з debounce
+// Виклик при завантаженні і ресайзі
 let resizeTimeout;
 window.addEventListener('load', handleSpoiler);
 window.addEventListener('resize', () => {
 	clearTimeout(resizeTimeout);
 	resizeTimeout = setTimeout(handleSpoiler, 100);
 });
+
 
 
 //=========================animations on scroll=========================

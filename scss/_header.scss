@@ -48,7 +48,6 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 	// .header__logo
 
 	&__logo {
-
 	}
 
 	// .header__button
@@ -56,23 +55,23 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 	&__button {
 	}
 }
-.logo{
-			display: flex;
-		align-items: center;
-		gap: toRem(10);
-		height: auto;
-		span {
-			@include adaptiveValue("font-size", 30, 25, $widthTo: 1000);
+.logo {
+	display: flex;
+	align-items: center;
+	gap: toRem(10);
+	height: auto;
+	span {
+		@include adaptiveValue("font-size", 30, 25, $widthTo: 1000);
 
-			font-size: toRem(30);
-			font-weight: 700;
-			color: $whiteColor;
-		}
-		img {
-			width: toRem(40);
-			height: toRem(40);
-			object-fit: contain;
-		}
+		font-size: toRem(30);
+		font-weight: 700;
+		color: $whiteColor;
+	}
+	img {
+		width: toRem(40);
+		height: toRem(40);
+		object-fit: contain;
+	}
 }
 .menu {
 	@media (max-width: toEm(960)) {
@@ -83,7 +82,7 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 	&__body {
 		@media (max-width: toEm(960)) {
 			position: fixed;
-			background-color: rgb(119, 115, 115);
+			background-color: rgb(162, 156, 156);
 			display: flex;
 			flex-direction: column;
 			justify-content: flex-start;
@@ -146,7 +145,6 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 		&.active {
 			color: $accent-color;
 			font-weight: 500;
-
 		}
 		@media (max-width: toEm(960)) {
 			font-size: toRem(28);

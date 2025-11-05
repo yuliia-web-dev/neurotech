@@ -25,7 +25,7 @@
 		border-bottom: toRem(1) solid rgba(128, 128, 128, 0.249);
 		display: flex;
 		flex-wrap: wrap;
-				justify-content: space-between;
+		justify-content: space-between;
 
 		@include adaptiveValue("gap", 50, 20);
 	}
@@ -56,9 +56,9 @@
 		gap: toRem(20);
 		max-width: toRem(350);
 	}
-	&__right-wrap{
+	&__right-wrap {
 		display: flex;
-flex-wrap: wrap;
+		flex-wrap: wrap;
 		@include adaptiveValue("gap", 50, 20);
 	}
 
@@ -189,10 +189,14 @@ flex-wrap: wrap;
 
 @media (max-width: toEm(400)) {
 	.item-navigation__list {
-		height: 0;
+		display: none;      /* не займає місця */
 		overflow: hidden;
-		transition: height 0.5s ease-in-out;
 	}
+
+	.item-navigation__list.active {
+		display: block;     /* показуємо, коли активний */
+	}
+
 	.item-navigation__title {
 		display: flex;
 		align-items: center;
