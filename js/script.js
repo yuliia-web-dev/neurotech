@@ -1,150 +1,125 @@
 "use strict"
 
 
-function handlePageLoad() {
-	const html = document.documentElement;
-
-	document.addEventListener('DOMContentLoaded', () => {
-		requestAnimationFrame(() => {
-			html.classList.remove('loading');
-			html.classList.add('loaded');
-		});
-	});
-}
-
-handlePageLoad();
-
-//====================================
-document.addEventListener("DOMContentLoaded", () => {
-	const body = document.body;
-	const menuIcons = document.querySelectorAll(".icon-menu");
-	const menuLinks = document.querySelectorAll(".menu__link");
-
-	if (menuIcons.length > 0) {
-		menuIcons.forEach(icon => {
-			icon.addEventListener("click", () => {
-				icon.classList.toggle("active");
-				body.classList.toggle("menu-open");
-			});
-		});
-	}
-
-	if (menuLinks.length > 0) {
-		menuLinks.forEach(link => {
-			link.addEventListener("click", () => {
-				body.classList.remove("menu-open");
-				menuIcons.forEach(icon => icon.classList.remove("active"));
-			});
-		});
-	}
-});
-
-
-
-window.addEventListener('scroll', () => {
-	const header = document.querySelector('.header');
-	if (window.scrollY > 50) {
-		header.classList.add('scrolled');
-	} else {
-		header.classList.remove('scrolled');
-	}
-});
+"use strict";
 
 document.addEventListener('DOMContentLoaded', () => {
+	const html = document.documentElement;
+	const body = document.body;
+	const header = document.querySelector('.header');
+	const menuIcons = document.querySelectorAll('.icon-menu');
+	const menuLinks = document.querySelectorAll('.menu__link');
 	const animation = document.querySelector('.animation');
 
+	//-------------------- Loading --------------------
+	requestAnimationFrame(() => {
+		html.classList.remove('loading');
+		html.classList.add('loaded');
+	});
+
+	//-------------------- Header scroll --------------------
+	window.addEventListener('scroll', () => {
+		header.classList.toggle('scrolled', window.scrollY > 50);
+	});
+
+	//-------------------- Menu toggle --------------------
+	if (menuIcons.length) {
+		menuIcons.forEach(icon => {
+			icon.addEventListener('click', () => {
+				icon.classList.toggle('active');
+				body.classList.toggle('menu-open');
+			});
+		});
+	}
+
+	if (menuLinks.length) {
+		menuLinks.forEach(link => {
+			link.addEventListener('click', () => {
+				body.classList.remove('menu-open');
+				menuIcons.forEach(icon => icon.classList.remove('active'));
+			});
+		});
+	}
+
+	//-------------------- Active link animation --------------------
 	function updateAnimationPosition() {
 		const windowWidth = window.innerWidth;
 		const activeLink = document.querySelector('.menu__link.active');
 
-		if (windowWidth >= 800) {
-			if (activeLink) {
-				const rect = activeLink.getBoundingClientRect();
-				const headerRect = document.querySelector('header').getBoundingClientRect();
+		if (!animation) return;
 
-				// Використовуємо requestAnimationFrame для плавного оновлення позиції
-				requestAnimationFrame(() => {
-					animation.style.left = `${rect.left - headerRect.left - 5}px`;
-					animation.style.width = `${rect.width + 10}px`;
-					animation.classList.add('show');
-				});
-			} else {
-				animation.classList.remove('show');
-			}
+		if (windowWidth >= 800 && activeLink) {
+			const headerRectLeft = document.querySelector('header').offsetLeft;
+			const rect = activeLink.getBoundingClientRect();
+
+			requestAnimationFrame(() => {
+				animation.style.left = `${rect.left - headerRectLeft - 5}px`;
+				animation.style.width = `${rect.width + 10}px`;
+				animation.classList.add('show');
+			});
 		} else {
 			animation.classList.remove('show');
 		}
 	}
 
-	// Оновлюємо позицію після завантаження всіх ресурсів
-	window.addEventListener('load', () => {
-		setTimeout(updateAnimationPosition, 200); // Збільшена затримка для повного завантаження стилів та ресурсів
-	});
-
-	// Оновлюємо позицію при зміні розміру вікна
+	// Debounce для resize
+	let resizeTimeout;
 	window.addEventListener('resize', () => {
-		requestAnimationFrame(updateAnimationPosition);
+		clearTimeout(resizeTimeout);
+		resizeTimeout = setTimeout(() => {
+			requestAnimationFrame(updateAnimationPosition);
+		}, 150);
 	});
 
-	// Динамічне перемикання активного пункту меню
-	document.querySelectorAll('.menu__link').forEach(link => {
+	menuLinks.forEach(link => {
 		link.addEventListener('click', () => {
-			document.querySelectorAll('.menu__link').forEach(l => l.classList.remove('active'));
+			menuLinks.forEach(l => l.classList.remove('active'));
 			link.classList.add('active');
-
-			// Використовуємо тайм-аут для коректного оновлення анімації
 			setTimeout(updateAnimationPosition, 50);
 		});
 	});
-});
 
-window.addEventListener('load', () => {
-	setTimeout(() => {
-		const heroSwiper = new Swiper('.hero__swiper', {
-			loop: true,
-			autoplay: {
-				delay: 7000,
-				disableOnInteraction: false,
-			},
-			slidesPerView: 1,
-			spaceBetween: 10,
-			effect: 'fade',
-			fadeEffect: { crossFade: true },
-			preloadImages: false,
-			lazy: {
-				loadPrevNext: true, // підвантажує сусідні слайди наперед
-			},
-			watchSlidesProgress: true,
-			breakpoints: {
-				640: { slidesPerView: 1, spaceBetween: 10 },
-				1024: { slidesPerView: 1, spaceBetween: 10 },
-			},
-			on: {
-				resize() {
-					this.update();
+	//-------------------- Hero Swiper --------------------
+	window.addEventListener('load', () => {
+		setTimeout(() => {
+			const heroSwiper = new Swiper('.hero__swiper', {
+				loop: true,
+				autoplay: {
+					delay: 7000,
+					disableOnInteraction: false,
 				},
-				slideChangeTransitionStart() {
-					updateActiveBg();
+				slidesPerView: 1,
+				spaceBetween: 10,
+				effect: 'fade',
+				fadeEffect: { crossFade: true },
+				preloadImages: false,
+				lazy: { loadPrevNext: true },
+				watchSlidesProgress: true,
+				breakpoints: {
+					640: { slidesPerView: 1, spaceBetween: 10 },
+					1024: { slidesPerView: 1, spaceBetween: 10 },
 				},
-			},
-		});
+				on: {
+					slideChangeTransitionStart() {
+						updateActiveBg();
+					},
+				},
+			});
 
-		// Отримуємо всі фони слайдів
-		const heroBgs = document.querySelectorAll('.slide-hero__bg');
+			const heroBgs = document.querySelectorAll('.slide-hero__bg');
 
-		// Функція для оновлення активного фону
-		function updateActiveBg() {
-			heroBgs.forEach(bg => bg.classList.remove('active'));
-			const activeSlide = heroSwiper.slides[heroSwiper.activeIndex];
-			const activeBg = activeSlide.querySelector('.slide-hero__bg');
-			if (activeBg) activeBg.classList.add('active');
-		}
+			function updateActiveBg() {
+				heroBgs.forEach(bg => bg.classList.remove('active'));
+				const activeSlide = heroSwiper.slides[heroSwiper.activeIndex];
+				const activeBg = activeSlide.querySelector('.slide-hero__bg');
+				if (activeBg) activeBg.classList.add('active');
+			}
 
-		// Встановлюємо активний фон для першого слайда
-		updateActiveBg();
-	}, 150);
+			updateActiveBg();
+			setTimeout(updateAnimationPosition, 200);
+		}, 150);
+	});
 });
-
 
 
 

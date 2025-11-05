@@ -1984,11 +1984,57 @@ textarea {
   resize: vertical;
 }
 
-.partners {
-  -webkit-padding-before: 3.125rem;
-          padding-block-start: 3.125rem;
-  -webkit-padding-after: 5rem;
-          padding-block-end: 5rem;
+@media (min-width: 81.25em) {
+  .partners {
+    -webkit-padding-before: 3.125rem;
+            padding-block-start: 3.125rem;
+  }
+}
+@media (min-width: 20em) and (max-width: 81.25em) {
+  @supports (padding-block-start: clamp( 2.5rem , 2.2959183673rem  +  1.0204081633vw , 3.125rem )) {
+    .partners {
+      -webkit-padding-before: clamp( 2.5rem , 2.2959183673rem  +  1.0204081633vw , 3.125rem );
+              padding-block-start: clamp( 2.5rem , 2.2959183673rem  +  1.0204081633vw , 3.125rem );
+    }
+  }
+  @supports not (padding-block-start: clamp( 2.5rem , 2.2959183673rem  +  1.0204081633vw , 3.125rem )) {
+    .partners {
+      -webkit-padding-before: calc(2.5rem + 0.625 * (100vw - 20rem) / 61.25);
+              padding-block-start: calc(2.5rem + 0.625 * (100vw - 20rem) / 61.25);
+    }
+  }
+}
+@media (max-width: 20em) {
+  .partners {
+    -webkit-padding-before: 2.5rem;
+            padding-block-start: 2.5rem;
+  }
+}
+@media (min-width: 81.25em) {
+  .partners {
+    -webkit-padding-after: 5rem;
+            padding-block-end: 5rem;
+  }
+}
+@media (min-width: 20em) and (max-width: 81.25em) {
+  @supports (padding-block-end: clamp( 2.5rem , 1.6836734694rem  +  4.0816326531vw , 5rem )) {
+    .partners {
+      -webkit-padding-after: clamp( 2.5rem , 1.6836734694rem  +  4.0816326531vw , 5rem );
+              padding-block-end: clamp( 2.5rem , 1.6836734694rem  +  4.0816326531vw , 5rem );
+    }
+  }
+  @supports not (padding-block-end: clamp( 2.5rem , 1.6836734694rem  +  4.0816326531vw , 5rem )) {
+    .partners {
+      -webkit-padding-after: calc(2.5rem + 2.5 * (100vw - 20rem) / 61.25);
+              padding-block-end: calc(2.5rem + 2.5 * (100vw - 20rem) / 61.25);
+    }
+  }
+}
+@media (max-width: 20em) {
+  .partners {
+    -webkit-padding-after: 2.5rem;
+            padding-block-end: 2.5rem;
+  }
 }
 .partners__text {
   text-align: center;
@@ -2068,13 +2114,6 @@ textarea {
         -ms-flex: 1 1 calc(50% - 1.875rem);
             flex: 1 1 calc(50% - 1.875rem);
     max-width: none;
-  }
-}
-@media (max-width: 23.4375em) {
-  .partners__item {
-    -webkit-box-flex: 1;
-        -ms-flex: 1 1 100%;
-            flex: 1 1 100%;
   }
 }
 .partners__item:hover .partners__logo {

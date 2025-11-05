@@ -1,6 +1,6 @@
 .partners {
-	padding-block-start: toRem(50);
-	padding-block-end: toRem(80);
+		@include adaptiveValue("padding-block-start",50,40);
+	@include adaptiveValue("padding-block-end",80,40);
 
 	// .partners__container
 
@@ -38,9 +38,7 @@
 			flex: 1 1 calc(50% - toRem(30));
 			max-width: none;
 		}
-		@media (max-width: toEm(375)) {
-			flex: 1 1 100%;
-		}
+		
 		&:hover {
 			.partners__logo {
 				opacity: 1;
