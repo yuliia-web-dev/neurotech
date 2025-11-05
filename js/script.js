@@ -98,6 +98,52 @@ document.addEventListener('DOMContentLoaded', () => {
 	});
 });
 
+window.addEventListener('load', () => {
+	setTimeout(() => {
+		const heroSwiper = new Swiper('.hero__swiper', {
+			loop: true,
+			autoplay: {
+				delay: 7000,
+				disableOnInteraction: false,
+			},
+			slidesPerView: 1,
+			spaceBetween: 10,
+			effect: 'fade',
+			fadeEffect: { crossFade: true },
+			preloadImages: false,
+			lazy: {
+				loadPrevNext: true, // підвантажує сусідні слайди наперед
+			},
+			watchSlidesProgress: true,
+			breakpoints: {
+				640: { slidesPerView: 1, spaceBetween: 10 },
+				1024: { slidesPerView: 1, spaceBetween: 10 },
+			},
+			on: {
+				resize() {
+					this.update();
+				},
+				slideChangeTransitionStart() {
+					updateActiveBg();
+				},
+			},
+		});
+
+		// Отримуємо всі фони слайдів
+		const heroBgs = document.querySelectorAll('.slide-hero__bg');
+
+		// Функція для оновлення активного фону
+		function updateActiveBg() {
+			heroBgs.forEach(bg => bg.classList.remove('active'));
+			const activeSlide = heroSwiper.slides[heroSwiper.activeIndex];
+			const activeBg = activeSlide.querySelector('.slide-hero__bg');
+			if (activeBg) activeBg.classList.add('active');
+		}
+
+		// Встановлюємо активний фон для першого слайда
+		updateActiveBg();
+	}, 150);
+});
 
 
 
