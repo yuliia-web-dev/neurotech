@@ -706,16 +706,32 @@ textarea {
     margin-bottom: 1.875rem;
   }
 }
-/* Плавне масштабування картинки тільки активного слайду */
+/*------------------- Swiper slides visibility -------------------*/
+/* Приховуємо всі слайди на старті */
+.swiper-slide {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+  z-index: 1 !important;
+}
+
+/* Відображаємо тільки активний слайд */
+.swiper-slide-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Масштабування фонового зображення тільки активного слайду */
 .swiper-slide .slide-hero__bg img {
   -webkit-transform: scale(1);
       -ms-transform: scale(1);
           transform: scale(1);
+  opacity: 0.95;
   -webkit-transition: opacity 1.2s ease, -webkit-transform 6s ease;
   transition: opacity 1.2s ease, -webkit-transform 6s ease;
   transition: transform 6s ease, opacity 1.2s ease;
   transition: transform 6s ease, opacity 1.2s ease, -webkit-transform 6s ease;
-  opacity: 0.95;
 }
 
 .swiper-slide-active .slide-hero__bg img {
@@ -723,13 +739,6 @@ textarea {
       -ms-transform: scale(1.1);
           transform: scale(1.1);
   opacity: 1;
-}
-
-/* Відключаємо правило opacity для неактивних слайдів */
-.swiper-slide {
-  -webkit-transition: opacity 0.55s ease-in-out !important;
-  transition: opacity 0.55s ease-in-out !important;
-  z-index: 1 !important;
 }
 
 .hero {
@@ -2775,19 +2784,19 @@ textarea {
 html {
   scroll-behavior: smooth;
 }
-
-html.loading body {
+html body {
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+}
+html.loading html body {
   opacity: 0;
   visibility: hidden;
   overflow: hidden;
 }
-
-html.loaded body {
+html.loaded html body {
   opacity: 1;
   visibility: visible;
   overflow: auto;
-  -webkit-transition: opacity 0.5s ease;
-  transition: opacity 0.5s ease;
 }
 
 body {

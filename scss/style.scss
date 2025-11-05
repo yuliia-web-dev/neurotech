@@ -54,19 +54,25 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 
 html {
 	scroll-behavior: smooth;
-}
-html.loading body {
-	opacity: 0;
-	visibility: hidden;
-	overflow: hidden;
+  body {
+    transition: opacity 0.5s ease;
+
+    // стан завантаження
+    html.loading & {
+      opacity: 0;
+      visibility: hidden;
+      overflow: hidden;
+    }
+
+    // стан завантажено
+    html.loaded & {
+      opacity: 1;
+      visibility: visible;
+      overflow: auto;
+    }
+  }
 }
 
-html.loaded body {
-	opacity: 1;
-	visibility: visible;
-	overflow: auto;
-	transition: opacity 0.5s ease;
-}
 body {
 	font-family: "Inter";
 	line-height: 1.2;
