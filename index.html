@@ -14,6 +14,10 @@
 	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 
 	<link rel="preload" as="image" href="img/slide-1.webp" media="(min-width: 768px)" fetchpriority="high">
+	<link rel="preload" as="image" href="img/slide-1-mobile.webp" media="(max-width: 767px)" fetchpriority="high">
+	<link rel="preload" as="image" href="img/slide-1-tablet.webp" media="(min-width: 768px) and (max-width: 1024px)"
+		fetchpriority="high">
+
 	<style>
 		html.loading body {
 			opacity: 0;
@@ -756,12 +760,14 @@
 							<div class="contact-form__row">
 								<div class="contact-form__group">
 									<label for="name" class="contact-form__label">Name</label>
-									<input type="text" id="name" class="contact-form__input" placeholder="Your Name" required autocomplete="on">
+									<input type="text" id="name" class="contact-form__input" placeholder="Your Name" required
+										autocomplete="on">
 								</div>
 
 								<div class="contact-form__group">
 									<label for="email" class="contact-form__label">Email</label>
-									<input type="email" id="email" class="contact-form__input" placeholder="Your Email" required autocomplete="on">
+									<input type="email" id="email" class="contact-form__input" placeholder="Your Email" required
+										autocomplete="on">
 								</div>
 							</div>
 
@@ -778,14 +784,15 @@
 
 								<div class="contact-form__group">
 									<label for="phone" class="contact-form__label">Telephone</label>
-									<input type="tel" id="phone" class="contact-form__input" placeholder="Your Phone" autocomplete="on">
+									<input type="tel" id="phone" class="contact-form__input" placeholder="Your Phone"
+										autocomplete="on">
 								</div>
 							</div>
 
 							<div class="contact-form__group contact-form__group--full">
 								<label for="details" class="contact-form__label">Additional Details</label>
-								<textarea id="details" class="contact-form__textarea"
-									placeholder="Additional Details" autocomplete="on"></textarea>
+								<textarea id="details" class="contact-form__textarea" placeholder="Additional Details"
+									autocomplete="on"></textarea>
 							</div>
 
 							<button type="submit" class="contact-form__button button">Submit Request</button>

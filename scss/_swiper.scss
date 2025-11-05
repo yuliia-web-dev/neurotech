@@ -37,6 +37,7 @@
 	// .slide-hero__bg
 
 	&__bg {
+		
 		background-color: #0a0a0a;
 		isolation: isolate;
 		overflow: hidden;
@@ -121,6 +122,5 @@
 
 .slide-hero:not(.swiper-slide-active) {
 	opacity: 0;
-	visibility: hidden;
-	pointer-events: none;
+	
 }
