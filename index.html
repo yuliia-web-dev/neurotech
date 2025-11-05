@@ -5,10 +5,14 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="NeuroTech - Innovative Tech Solutions for a Smarter Future">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+	<link rel="preload" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" as="style"
+		onload="this.rel='stylesheet'">
+	<noscript>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+	</noscript>
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-	
+
 	<link rel="preload" as="image" href="img/slide-1.webp" media="(min-width: 768px)" fetchpriority="high">
 	<style>
 		html.loading body {
@@ -66,7 +70,8 @@
 							<picture class="slide-hero__bg">
 								<source media="(max-width: 767px)" srcset="img/slide-1-mobile.webp" type="image/webp">
 								<source media="(max-width: 1024px)" srcset="img/slide-1-tablet.webp" type="image/webp">
-								<img src="img/slide-1.webp" alt="Image" width="1920" height="1080" loading="eager" fetchpriority="high">
+								<img src="img/slide-1.webp" alt="Image" width="1920" height="1080" loading="eager"
+									fetchpriority="high">
 							</picture>
 
 
@@ -1066,7 +1071,7 @@
 			</div>
 		</footer>
 
-		<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
 		<script src="js/script.js"></script>
 	</div>
 </body>
