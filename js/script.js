@@ -211,25 +211,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.addEventListener('DOMContentLoaded', () => {
 	const swiperContainer = document.querySelector('.testimonials__swiper');
-
 	if (!swiperContainer) return;
 
-	const testimonialsSwiper = new Swiper(swiperContainer, {
-		loop: true,
-		autoplay: {
-			delay: 5000,
-			disableOnInteraction: false,
-		},
-		slidesPerView: 1,
-		spaceBetween: 20,
-		observer: true,
-		observeParents: true,
+	// Створюємо observer для ініціалізації, коли секція потрапляє у viewport
+	const observer = new IntersectionObserver((entries, obs) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				new Swiper(swiperContainer, {
+					loop: true,
+					autoplay: {
+						delay: 5000,
+						disableOnInteraction: false,
+					},
+					slidesPerView: 1,
+					spaceBetween: 20,
+					observer: true,
+					observeParents: true,
+				});
+				obs.disconnect(); // Відключаємо після першої ініціалізації
+			}
+		});
+	}, { threshold: 0.1 });
 
-
-
-	});
+	observer.observe(swiperContainer);
 });
-
 
 //=====================footer spoiler==========
 

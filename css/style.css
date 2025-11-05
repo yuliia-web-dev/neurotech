@@ -2811,6 +2811,7 @@ body.menu-open {
   background-color: #2e7cfb;
   color: #fff;
   border: none;
+  font-weight: 500;
   border-radius: 0.3125rem;
   width: -webkit-fit-content;
   width: -moz-fit-content;
