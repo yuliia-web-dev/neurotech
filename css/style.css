@@ -344,7 +344,7 @@ textarea {
 }
 @media (any-hover: hover) {
   .menu__item:hover .menu__link {
-    color: #2e7cfb;
+    color: #1e63d1;
   }
 }
 .menu__link {
@@ -356,7 +356,7 @@ textarea {
   transition: color 0.3s;
 }
 .menu__link.active {
-  color: #2e7cfb;
+  color: #1e63d1;
   font-weight: 500;
 }
 @media (max-width: 60em) {
@@ -393,7 +393,7 @@ textarea {
     width: 100%;
     height: 0.1875rem;
     border-radius: 0.3125rem;
-    background-color: #2e7cfb;
+    background-color: #1e63d1;
     display: inline-block;
     -webkit-transition: all 0.4s;
     transition: all 0.4s;
@@ -429,7 +429,7 @@ textarea {
   bottom: 0;
   height: 0.3125rem;
   border-radius: 0.3125rem;
-  background: #2e7cfb;
+  background: #1e63d1;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
   left: 0;
@@ -1031,7 +1031,7 @@ textarea {
 }
 .about__block {
   max-width: 32.5rem;
-  border-left: 0.25rem solid #2e7cfb;
+  border-left: 0.25rem solid #1e63d1;
   padding-left: 1.875rem;
   -ms-flex-item-align: end;
       align-self: flex-end;
@@ -1234,7 +1234,7 @@ textarea {
   }
 }
 .item-support--background {
-  background-color: #2e7cfb;
+  background-color: #1e63d1;
 }
 .item-support--background .item-support__text,
 .item-support--background .item-support__title {
@@ -1252,7 +1252,7 @@ textarea {
   bottom: 0;
   width: 100%;
   height: 0;
-  background-color: #2e7cfb;
+  background-color: #1e63d1;
   z-index: -1;
   -webkit-transition: height 0.5s ease;
   transition: height 0.5s ease;
@@ -1278,7 +1278,7 @@ textarea {
 }
 .item-support__button {
   background-color: #fff;
-  color: #2e7cfb;
+  color: #1e63d1;
   padding: 0.625rem 1.5625rem;
   text-transform: uppercase;
   font-size: 0.875rem;
@@ -1296,7 +1296,7 @@ textarea {
           transform: translateY(-0.3125rem);
 }
 .item-support__link {
-  color: #2e7cfb;
+  color: #1e63d1;
 }
 
 .testimonials {
@@ -1346,7 +1346,7 @@ textarea {
   border-top-right-radius: 0.3125rem;
   border-bottom-right-radius: 0.3125rem;
   max-width: 25rem;
-  background-color: #2e7cfb;
+  background-color: #1e63d1;
   color: #ffffff;
   padding: 1.875rem;
   display: grid;
@@ -1390,7 +1390,7 @@ textarea {
 }
 .testimonials__right-wrap {
   position: relative;
-  background-color: #2e7cfb;
+  background-color: #1e63d1;
   width: 50%;
 }
 @media (min-width: 81.25em) {
@@ -1586,7 +1586,7 @@ textarea {
 }
 .item-project__content {
   padding: 1.25rem 1.875rem;
-  background-color: #2e7cfb;
+  background-color: #1e63d1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1662,7 +1662,7 @@ textarea {
   font-weight: 300;
 }
 .item-project__link, .cta__link {
-  color: #2e7cfb;
+  color: #1e63d1;
   font-weight: 600;
   text-transform: uppercase;
   font-size: 0.75rem;
@@ -1823,7 +1823,7 @@ textarea {
   content: "";
   position: absolute;
   inset: 0;
-  background-color: #2e7cfb;
+  background-color: #1e63d1;
   opacity: 0.9;
   z-index: 1;
   pointer-events: none;
@@ -1988,7 +1988,7 @@ textarea {
   transition: border-color 0.2s, box-shadow 0.2s, -webkit-box-shadow 0.2s;
 }
 .contact-form__input:focus, .contact-form__select:focus, .contact-form__textarea:focus {
-  border-color: #2e7cfb;
+  border-color: #1e63d1;
   -webkit-box-shadow: 0 0 0 0.1875rem rgba(89, 22, 245, 0.1);
           box-shadow: 0 0 0 0.1875rem rgba(89, 22, 245, 0.1);
   outline: none;
@@ -2279,7 +2279,7 @@ textarea {
   }
 }
 .item-blog__title a:hover {
-  color: #2e7cfb;
+  color: #1e63d1;
 }
 .item-blog__text {
   -webkit-box-flex: 1;
@@ -2555,7 +2555,7 @@ textarea {
 }
 @media (any-hover: hover) {
   .item-navigation__item:hover .item-navigation__link {
-    color: #2e7cfb;
+    color: #1e63d1;
   }
 }
 .item-navigation__item::before {
@@ -2663,7 +2663,7 @@ textarea {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border: 1px solid #2e7cfb;
+  border: 1px solid #1e63d1;
   border-radius: 0.3125rem;
   background-color: #ffffff;
   padding-block: 0.3125rem;
@@ -2673,7 +2673,7 @@ textarea {
   transition: box-shadow 0.3s ease, border-color 0.3s ease, -webkit-box-shadow 0.3s ease;
 }
 .newsletter__wrap:focus-within {
-  border-color: #2e7cfb;
+  border-color: #1e63d1;
   -webkit-box-shadow: 0 0 10px rgba(84, 84, 224, 0.6);
           box-shadow: 0 0 10px rgba(84, 84, 224, 0.6);
 }
@@ -2710,7 +2710,7 @@ textarea {
   bottom: 0.3125rem;
   padding: 0.5rem 1.25rem;
   font-size: 0.875rem;
-  background-color: #2e7cfb;
+  background-color: #1e63d1;
   color: #fff;
   border: none;
   border-radius: 0.3125rem;
@@ -2723,7 +2723,7 @@ textarea {
   transition: background-color 0.3s;
 }
 .newsletter__button:hover {
-  background-color: rgb(4.6197183099, 94.7042253521, 241.3802816901);
+  background-color: rgb(23.5983263598, 77.8744769874, 164.4016736402);
 }
 .newsletter__social {
   display: -webkit-box;
@@ -2740,7 +2740,7 @@ textarea {
 .newsletter__social-link {
   width: 3.4375rem;
   height: 3.4375rem;
-  background-color: #2e7cfb;
+  background-color: #1e63d1;
   border-radius: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2767,7 +2767,7 @@ textarea {
   background-color: #ffffff;
 }
 .newsletter__social-link:hover svg path {
-  fill: #2e7cfb;
+  fill: #1e63d1;
 }
 
 html {
@@ -2855,7 +2855,7 @@ html body.menu-open {
 }
 
 .label {
-  color: #2e7cfb;
+  color: #1e63d1;
   font-weight: 600;
   text-transform: uppercase;
 }
@@ -2863,7 +2863,7 @@ html body.menu-open {
 .button {
   padding: 0.9375rem 1.875rem;
   font-size: 1.125rem;
-  background-color: #2e7cfb;
+  background-color: #1e63d1;
   color: #fff;
   border: none;
   font-weight: 500;
@@ -2879,18 +2879,18 @@ html body.menu-open {
   transition: background-color 0.3s, transform 0.3s ease, -webkit-transform 0.3s ease;
 }
 .button:hover {
-  background-color: rgb(4.6197183099, 94.7042253521, 241.3802816901);
+  background-color: rgb(23.5983263598, 77.8744769874, 164.4016736402);
   -webkit-transform: translateY(-5px);
       -ms-transform: translateY(-5px);
           transform: translateY(-5px);
 }
 .button--background-white {
   background-color: #ffffff;
-  color: #2e7cfb;
-  border: 2px solid #2e7cfb;
+  color: #1e63d1;
+  border: 2px solid #1e63d1;
 }
 .button--background-white:hover {
-  background-color: rgb(246.1690140845, 249.4647887324, 254.8309859155);
+  background-color: rgb(196.410041841, 215.7531380753, 246.589958159);
 }
 
 .custom-block {
@@ -2898,7 +2898,7 @@ html body.menu-open {
   bottom: 0;
   right: 0;
   padding: 2.5rem;
-  background: #2e7cfb;
+  background: #1e63d1;
   color: #ffffff;
   max-width: 21.25rem;
   width: 100%;
@@ -2955,7 +2955,7 @@ html body.menu-open {
   right: 100%;
   width: 3.125rem;
   height: 2.6875rem;
-  background-image: linear-gradient(220deg, #2e7cfb 48%, rgba(255, 255, 255, 0) 26%);
+  background-image: linear-gradient(220deg, #1e63d1 48%, rgba(255, 255, 255, 0) 26%);
   z-index: 5;
 }
 @media (max-width: 30em) {
@@ -2975,7 +2975,7 @@ html body.menu-open {
 }
 
 .link {
-  color: #2e7cfb;
+  color: #1e63d1;
   font-weight: 600;
   text-transform: uppercase;
   font-size: 0.75rem;
