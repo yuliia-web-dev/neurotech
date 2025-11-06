@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			spaceBetween: 10,
 			effect: 'fade',
 			fadeEffect: { crossFade: true },
-			speed: 1000, 
+			speed: 700, 
 			preloadImages: false,
 			lazy: { loadPrevNext: true },
 			watchSlidesProgress: true,
