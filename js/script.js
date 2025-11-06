@@ -98,11 +98,12 @@ document.addEventListener('DOMContentLoaded', () => {
 	window.addEventListener('load', () => {
 		heroSwiper = new Swiper('.hero__swiper', {
 			loop: true,
-			autoplay: { delay: 7000, disableOnInteraction: false },
+			autoplay: { delay: 5000, disableOnInteraction: false },
 			slidesPerView: 1,
 			spaceBetween: 10,
 			effect: 'fade',
 			fadeEffect: { crossFade: true },
+			speed: 1000, 
 			preloadImages: false,
 			lazy: { loadPrevNext: true },
 			watchSlidesProgress: true,
