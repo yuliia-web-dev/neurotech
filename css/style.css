@@ -2776,25 +2776,26 @@ html {
   scroll-behavior: smooth;
 }
 html body {
+  font-family: "Inter";
+  line-height: 1.2;
   -webkit-transition: opacity 0.5s ease;
   transition: opacity 0.5s ease;
 }
+@media (prefers-reduced-motion: reduce) {
+  html body {
+    -webkit-transition: none;
+    transition: none;
+  }
+}
 html.loading html body {
   opacity: 0;
-  visibility: hidden;
   overflow: hidden;
 }
 html.loaded html body {
   opacity: 1;
-  visibility: visible;
   overflow: auto;
 }
-
-body {
-  font-family: "Inter";
-  line-height: 1.2;
-}
-body.menu-open {
+html body.menu-open {
   overflow: hidden;
   -ms-scroll-chaining: none;
       overscroll-behavior: none;

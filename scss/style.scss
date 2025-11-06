@@ -54,38 +54,41 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 
 html {
 	scroll-behavior: smooth;
-  body {
-    transition: opacity 0.5s ease;
 
-    // стан завантаження
-    html.loading & {
-      opacity: 0;
-      visibility: hidden;
-      overflow: hidden;
-    }
+	body {
+		font-family: "Inter";
+		line-height: 1.2;
+		transition: opacity 0.5s ease;
 
-    // стан завантажено
-    html.loaded & {
-      opacity: 1;
-      visibility: visible;
-      overflow: auto;
-    }
-  }
-}
+		@media (prefers-reduced-motion: reduce) {
+			transition: none;
+		}
 
-body {
-	font-family: "Inter";
-	line-height: 1.2;
-	&.menu-open {
-		overflow: hidden;
-		overscroll-behavior: none;
+		// Під час завантаження сторінки
+		html.loading & {
+			opacity: 0;
+			overflow: hidden;
+		}
+
+		// Коли все завантажено
+		html.loaded & {
+			opacity: 1;
+			overflow: auto;
+		}
+
+		&.menu-open {
+			overflow: hidden;
+			overscroll-behavior: none;
+		}
 	}
 }
+
 .wrapper {
 	overflow: clip;
 	display: flex;
 	flex-direction: column;
 	min-height: 100%;
+
 	main {
 		flex-grow: 1;
 	}
