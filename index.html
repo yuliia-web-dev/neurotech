@@ -73,18 +73,27 @@
 					<div class="hero__wrapper swiper-wrapper">
 						<div class="hero__slide slide-hero swiper-slide">
 							<picture class="slide-hero__bg">
-								<source media="(max-width: 767px)" srcset="img/slide-1-mobile.webp" type="image/webp">
-								<source media="(max-width: 1024px)" srcset="img/slide-1-tablet.webp" type="image/webp">
-								<img src="img/slide-1.webp" alt="AI innovation background" width="1920" height="1080"
-									loading="eager" fetchpriority="high">
+								<!-- Mobile (до 767px) -->
+								<source media="(max-width: 767px)"
+									srcset="img/slide-1-mobile.webp 1x, img/slide-1-mobile@2x.webp 2x" type="image/webp">
+
+								<!-- Tablet (до 1024px) -->
+								<source media="(max-width: 1024px)"
+									srcset="img/slide-1-tablet.webp 1x, img/slide-1-tablet@2x.webp 2x" type="image/webp">
+
+								<!-- Desktop -->
+								<img src="img/slide-1.webp" srcset="img/slide-1.webp 1x, img/slide-1@2x.webp 2x" sizes="100vw"
+									alt="AI innovation background" width="1920" height="1080" loading="eager"
+									fetchpriority="high">
 							</picture>
+
 						</div>
 
 						<div class="hero__slide slide-hero swiper-slide">
 							<picture class="slide-hero__bg">
 								<source media="(max-width: 767px)" srcset="img/slide-2-mobile.webp" type="image/webp">
 								<source media="(max-width: 1024px)" srcset="img/slide-2-tablet.webp" type="image/webp">
-								<img src="img/slide-2.webp" alt="AI robotics concept" width="1920" height="1080" loading="lazy">
+								<img src="img/slide-2.webp" alt="AI robotics concept" width="1920" height="1080" loading="lazy"  sizes="100vw">
 							</picture>
 						</div>
 
@@ -93,7 +102,7 @@
 								<source media="(max-width: 767px)" srcset="img/slide-3-mobile.webp" type="image/webp">
 								<source media="(max-width: 1024px)" srcset="img/slide-3-tablet.webp" type="image/webp">
 								<img src="img/slide-3.webp" alt="Futuristic neural network" width="1920" height="1080"
-									loading="lazy">
+									loading="lazy" sizes="100vw">
 							</picture>
 						</div>
 
