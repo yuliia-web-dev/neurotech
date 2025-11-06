@@ -449,32 +449,22 @@ textarea {
   top: 0;
   left: 0;
   width: 100%;
-  min-height: 100vh;
+  height: 100%;
   z-index: 1;
-}
-@media (max-width: 47.99875em) {
-  .hero__swiper {
-    min-height: 70vh;
-  }
 }
 .hero__wrapper {
   height: 100%;
 }
-.hero__slide {
-  width: 100%;
-  min-height: 100vh;
-}
-
 .slide-hero {
   padding-right: 0.9375rem;
   width: 100%;
-  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  min-height: 100vh;
 }
 @media (min-width: 81.25em) {
   .slide-hero {
@@ -540,6 +530,11 @@ textarea {
 @media (max-width: 20em) {
   .slide-hero {
     padding-left: 0.9375rem;
+  }
+}
+@media (max-width: 47.99875em) {
+  .slide-hero {
+    min-height: 70vh;
   }
 }
 .slide-hero__bg {
@@ -717,22 +712,9 @@ textarea {
   z-index: 1 !important;
 }
 
-/* Відображаємо тільки активний слайд */
 .swiper-slide-active {
   opacity: 1;
   visibility: visible;
-}
-
-/* Масштабування фонового зображення тільки активного слайду */
-.swiper-slide .slide-hero__bg img {
-  -webkit-transform: scale(1);
-      -ms-transform: scale(1);
-          transform: scale(1);
-  opacity: 0.95;
-  -webkit-transition: opacity 1.2s ease, -webkit-transform 6s ease;
-  transition: opacity 1.2s ease, -webkit-transform 6s ease;
-  transition: transform 6s ease, opacity 1.2s ease;
-  transition: transform 6s ease, opacity 1.2s ease, -webkit-transform 6s ease;
 }
 
 .swiper-slide-active .slide-hero__bg img {
