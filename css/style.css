@@ -1517,6 +1517,32 @@ textarea {
             padding-block-start: 3.125rem;
   }
 }
+@media (min-width: 81.25em) {
+  .projects {
+    -webkit-padding-after: 6.25rem;
+            padding-block-end: 6.25rem;
+  }
+}
+@media (min-width: 20em) and (max-width: 81.25em) {
+  @supports (padding-block-end: clamp( 3.125rem , 2.1045918367rem  +  5.1020408163vw , 6.25rem )) {
+    .projects {
+      -webkit-padding-after: clamp( 3.125rem , 2.1045918367rem  +  5.1020408163vw , 6.25rem );
+              padding-block-end: clamp( 3.125rem , 2.1045918367rem  +  5.1020408163vw , 6.25rem );
+    }
+  }
+  @supports not (padding-block-end: clamp( 3.125rem , 2.1045918367rem  +  5.1020408163vw , 6.25rem )) {
+    .projects {
+      -webkit-padding-after: calc(3.125rem + 3.125 * (100vw - 20rem) / 61.25);
+              padding-block-end: calc(3.125rem + 3.125 * (100vw - 20rem) / 61.25);
+    }
+  }
+}
+@media (max-width: 20em) {
+  .projects {
+    -webkit-padding-after: 3.125rem;
+            padding-block-end: 3.125rem;
+  }
+}
 .projects__label {
   text-align: center;
 }

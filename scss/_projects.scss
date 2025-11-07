@@ -1,5 +1,6 @@
 .projects {
 	@include adaptiveValue("padding-block-start",100,50);
+	@include adaptiveValue("padding-block-end",100,50);
 	// .projects__container
 
 	&__container {
