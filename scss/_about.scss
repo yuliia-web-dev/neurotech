@@ -1,6 +1,6 @@
 .about {
 	scroll-margin-top: toRem(50);
-	@include adaptiveValue("padding-block", 100, 50);
+	@include adaptiveValue("padding-block", 100, 0);
 	// .about__container
 
 	&__container {

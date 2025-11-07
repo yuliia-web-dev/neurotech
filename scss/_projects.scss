@@ -1,5 +1,5 @@
 .projects {
-	padding: toRem(100) 0;
+	@include adaptiveValue("padding-block-start",100,50);
 	// .projects__container
 
 	&__container {

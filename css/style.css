@@ -909,20 +909,20 @@ textarea {
   }
 }
 @media (min-width: 20em) and (max-width: 81.25em) {
-  @supports (padding-block: clamp( 3.125rem , 2.1045918367rem  +  5.1020408163vw , 6.25rem )) {
+  @supports (padding-block: clamp( 0.0000000625rem , -2.0408162436rem  +  10.2040815306vw , 6.25rem )) {
     .about {
-      padding-block: clamp( 3.125rem , 2.1045918367rem  +  5.1020408163vw , 6.25rem );
+      padding-block: clamp( 0.0000000625rem , -2.0408162436rem  +  10.2040815306vw , 6.25rem );
     }
   }
-  @supports not (padding-block: clamp( 3.125rem , 2.1045918367rem  +  5.1020408163vw , 6.25rem )) {
+  @supports not (padding-block: clamp( 0.0000000625rem , -2.0408162436rem  +  10.2040815306vw , 6.25rem )) {
     .about {
-      padding-block: calc(3.125rem + 3.125 * (100vw - 20rem) / 61.25);
+      padding-block: calc(0.0000000625rem + 6.2499999375 * (100vw - 20rem) / 61.25);
     }
   }
 }
 @media (max-width: 20em) {
   .about {
-    padding-block: 3.125rem;
+    padding-block: 0.0000000625rem;
   }
 }
 .about__container {
@@ -1060,20 +1060,20 @@ textarea {
   }
 }
 @media (min-width: 20em) and (max-width: 81.25em) {
-  @supports (padding-block: clamp( 3.125rem , 2.1045918367rem  +  5.1020408163vw , 6.25rem )) {
+  @supports (padding-block: clamp( 5rem , 4.5918367347rem  +  2.0408163265vw , 6.25rem )) {
     .services {
-      padding-block: clamp( 3.125rem , 2.1045918367rem  +  5.1020408163vw , 6.25rem );
+      padding-block: clamp( 5rem , 4.5918367347rem  +  2.0408163265vw , 6.25rem );
     }
   }
-  @supports not (padding-block: clamp( 3.125rem , 2.1045918367rem  +  5.1020408163vw , 6.25rem )) {
+  @supports not (padding-block: clamp( 5rem , 4.5918367347rem  +  2.0408163265vw , 6.25rem )) {
     .services {
-      padding-block: calc(3.125rem + 3.125 * (100vw - 20rem) / 61.25);
+      padding-block: calc(5rem + 1.25 * (100vw - 20rem) / 61.25);
     }
   }
 }
 @media (max-width: 20em) {
   .services {
-    padding-block: 3.125rem;
+    padding-block: 5rem;
   }
 }
 .services__wrapper {
@@ -1491,8 +1491,31 @@ textarea {
   font-family: "Heebo", sans-serif;
   font-weight: 300;
 }
-.projects {
-  padding: 6.25rem 0;
+@media (min-width: 81.25em) {
+  .projects {
+    -webkit-padding-before: 6.25rem;
+            padding-block-start: 6.25rem;
+  }
+}
+@media (min-width: 20em) and (max-width: 81.25em) {
+  @supports (padding-block-start: clamp( 3.125rem , 2.1045918367rem  +  5.1020408163vw , 6.25rem )) {
+    .projects {
+      -webkit-padding-before: clamp( 3.125rem , 2.1045918367rem  +  5.1020408163vw , 6.25rem );
+              padding-block-start: clamp( 3.125rem , 2.1045918367rem  +  5.1020408163vw , 6.25rem );
+    }
+  }
+  @supports not (padding-block-start: clamp( 3.125rem , 2.1045918367rem  +  5.1020408163vw , 6.25rem )) {
+    .projects {
+      -webkit-padding-before: calc(3.125rem + 3.125 * (100vw - 20rem) / 61.25);
+              padding-block-start: calc(3.125rem + 3.125 * (100vw - 20rem) / 61.25);
+    }
+  }
+}
+@media (max-width: 20em) {
+  .projects {
+    -webkit-padding-before: 3.125rem;
+            padding-block-start: 3.125rem;
+  }
 }
 .projects__label {
   text-align: center;
