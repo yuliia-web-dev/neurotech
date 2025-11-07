@@ -129,9 +129,11 @@ document.addEventListener("DOMContentLoaded", function () {
 				const destinationSelector = data[0].trim();
 				const order = parseInt(data[1].trim());
 				const requiredScreenWidth = parseInt(data[2].trim());
+
 				const destination = document.querySelector(destinationSelector);
 				if (!destination) return;
 
+				// Збереження початкового контейнера
 				if (!element.dataset.originalParent) {
 					const parent = element.parentNode;
 					const index = Array.from(parent.children).indexOf(element);
@@ -140,18 +142,24 @@ document.addEventListener("DOMContentLoaded", function () {
 				}
 
 				if (screenWidth <= requiredScreenWidth && !element.classList.contains("moved")) {
+					// Переміщення в нове місце
 					if (order === 1) {
 						destination.insertBefore(element, destination.firstChild);
 					} else {
 						const previousElement = destination.children[order - 2];
-						if (previousElement) destination.insertBefore(element, previousElement.nextSibling);
-						else destination.appendChild(element);
+						if (previousElement) {
+							destination.insertBefore(element, previousElement.nextSibling);
+						} else {
+							destination.appendChild(element);
+						}
 					}
 					element.classList.add("moved");
 				} else if (screenWidth > requiredScreenWidth && element.classList.contains("moved")) {
+					// Повернення на початкове місце
 					const originalParentSelector = element.dataset.originalParent;
 					const originalIndex = parseInt(element.dataset.originalIndex, 10);
 					const originalParent = document.querySelector(originalParentSelector);
+
 					if (originalParent) {
 						const children = Array.from(originalParent.children);
 						if (originalIndex < children.length) {
@@ -167,10 +175,9 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 	moveElements();
-	let moveTimeout;
-	window.addEventListener("resize", () => {
-		clearTimeout(moveTimeout);
-		moveTimeout = setTimeout(moveElements, 200);
+
+	window.addEventListener("resize", function () {
+		moveElements();
 	});
 });
 
