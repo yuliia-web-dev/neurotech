@@ -530,11 +530,6 @@ textarea {
     padding-left: 0.9375rem;
   }
 }
-@media (max-width: 47.99875em) {
-  .slide-hero {
-    min-height: 70vh;
-  }
-}
 .slide-hero__bg {
   position: absolute;
   top: 0;
@@ -1143,13 +1138,6 @@ textarea {
           transform: translateY(-3.125rem);
   position: relative;
   z-index: 5;
-}
-@media (max-width: 47.99875em) {
-  .support {
-    -webkit-transform: translateY(-1.875rem);
-        -ms-transform: translateY(-1.875rem);
-            transform: translateY(-1.875rem);
-  }
 }
 .support__wrapper {
   display: -webkit-box;
